@@ -1,4 +1,20 @@
-<header class="flex justify-between border-b border-slate-200 px-10 py-8">
+<mat-sidenav-container class="container">
+  <!-- Drawer -->
+  <mat-drawer class="custom-drawer" mode="over" opened>
+    <h3>Side Drawer Content</h3>
+    <button mat-button (click)="closeDrawer()">Close Drawer</button>
+  </mat-drawer>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <h1>Main Layout</h1>
+    <button mat-button (click)="openDrawer()">Open Drawer</button>
+  </div>
+</mat-sidenav-container>
+
+<header
+  class="sticky top-0 z-10 bg-white bg-opacity-80 flex justify-between border-b border-slate-200 lg:rounded-xl px-10 py-8"
+>
   <div class="flex items-center gap-4">
     <img src="/assets/logos/logo.png" alt="Logo" class="w-11" />
 

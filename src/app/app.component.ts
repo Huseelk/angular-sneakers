@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { InputTextModule } from 'primeng/inputtext';
-import { FormsModule } from '@angular/forms';
-import { CalendarModule } from 'primeng/calendar';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './shared/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -12,13 +11,14 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     RouterOutlet,
     FormsModule,
-    InputTextModule,
-    CalendarModule,
     HeaderComponent,
     HttpClientModule,
+    CommonModule,
+    ReactiveFormsModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {
   constructor() {}

@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-cart-item',
   standalone: true,
   imports: [],
   templateUrl: './cart-item.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CartItemComponent {
   @Input() title: string = '';

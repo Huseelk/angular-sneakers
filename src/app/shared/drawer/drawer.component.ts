@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CartItemComponent } from '../cart-item/cart-item.component';
 
 @Component({
@@ -6,6 +6,7 @@ import { CartItemComponent } from '../cart-item/cart-item.component';
   standalone: true,
   imports: [CartItemComponent],
   templateUrl: './drawer.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DrawerComponent {
   @Input() title: string = '';

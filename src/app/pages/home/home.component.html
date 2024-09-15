@@ -1,36 +1,53 @@
 <div class="p-10">
   <div class="flex justify-between items-center mb-10">
     <h1 class="text-3xl font-bold">All Sneakers</h1>
-    <div class="flex items-center gap-4">
+
+    <form
+      [formGroup]="form"
+      class="flex flex-wrap items-center justify-end gap-4"
+    >
       <select
+        formControlName="sort"
         class="py-2 px-3 border border-gray-200 focus:border-gray-400 rounded-md focus:outline-none"
       >
         <option value="name">By Name</option>
         <option value="price">By Price (cheap)</option>
-        <option value="price">By Price (expensive)</option>
+        <option value="-price">By Price (expensive)</option>
       </select>
+
       <div class="relative">
         <input
+          formControlName="search"
           type="text"
           class="border border-gray-200 rounded-md py-2 pl-10 pr-4 focus:outline-none focus:border-gray-400"
           placeholder="Search..."
         />
+
         <div
           class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
         >
           <img src="assets/icons/search.svg" />
         </div>
       </div>
-    </div>
+    </form>
   </div>
 
-  <div *ngIf="items$ | async as items" class="grid grid-cols-4 gap-10">
-    <app-card
-      *ngFor="let item of items"
-      [title]="item.title"
-      [price]="item.price"
-      [img]="'assets' + item.imageUrl"
+  <ng-container *ngIf="items$ | async as items">
+    <div
+      *ngIf="items.length; else noItems"
+      class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10"
     >
-    </app-card>
-  </div>
+      <app-card
+        *ngFor="let item of items; let i = index; trackBy: trackByFn"
+        [item]="item"
+      >
+      </app-card>
+    </div>
+
+    <ng-template #noItems>
+      <div class="w-full text-center font-bold my-20 text-lg">
+        No data found
+      </div>
+    </ng-template>
+  </ng-container>
 </div>
